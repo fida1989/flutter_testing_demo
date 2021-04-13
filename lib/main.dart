@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_testing_demo/details.dart';
 
 void main() => runApp(MyApp());
 
@@ -64,6 +65,15 @@ class _HomePageState extends State<HomePage> {
                 setState(() {
                   _reversed = reverseString(_controller.text);
                 });
+              },
+            ),
+            RaisedButton(
+              child: Text("Details"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsPage()),
+                );
               },
             ),
           ],

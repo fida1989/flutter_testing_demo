@@ -11,7 +11,7 @@ void main(){
     final apiProvider = ApiProvider();
     // Set optional mock client
     apiProvider.client = MockClient((request) async {
-      final mapJson = {'id':1};
+      final mapJson = {'id':1, 'name': 'flutter'};
       return Response(json.encode(mapJson),200);
     });
     final item = await apiProvider.fetchPosts();
