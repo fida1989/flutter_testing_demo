@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_testing_demo/api_provider.dart';
+
+import 'item_model.dart';
 
 class DetailsPage extends StatefulWidget {
   @override
@@ -8,10 +12,21 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   TextEditingController _controller;
   String _reversed;
+  ItemModel itemModel;
+  String title;
+  final apiProvider = ApiProvider();
+
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+      _controller = TextEditingController();
+      itemModel = await apiProvider.fetchPosts();
+      setState(() {
+       title = itemModel.id.toString();
+      });
+
+    });
   }
 
   @override
@@ -26,7 +41,7 @@ class _DetailsPageState extends State<DetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "Hello",
+              title != null ? title : "Loading...",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0,

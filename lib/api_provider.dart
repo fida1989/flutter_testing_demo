@@ -4,9 +4,8 @@ import 'dart:convert';
 
 class ApiProvider {
   Client client = Client();
-  fetchPosts() async {
+  Future<ItemModel> fetchPosts() async {
     final response = await client.get("https://jsonplaceholder.typicode.com/posts/1");
-    print(response.statusCode);
     ItemModel itemModel = ItemModel.fromJson(json.decode(response.body));
     return itemModel;
   }
