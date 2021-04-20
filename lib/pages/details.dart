@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_testing_demo/api_provider.dart';
+import 'package:flutter_testing_demo/api/api_provider.dart';
 
-import 'item_model.dart';
+import '../models/item_model.dart';
 
 class DetailsPage extends StatefulWidget {
+
+  final ApiProvider apiProvider;
+
+  const DetailsPage({Key key, this.apiProvider}) : super(key: key);
+
   @override
-  _DetailsPageState createState() => _DetailsPageState();
+  _DetailsPageState createState() => _DetailsPageState(this.apiProvider);
+
+
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  TextEditingController _controller;
-  String _reversed;
   ItemModel itemModel;
   String title;
-  final apiProvider = ApiProvider();
+  final ApiProvider apiProvider;
+
+  _DetailsPageState(this.apiProvider);
 
   @override
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
-      _controller = TextEditingController();
       itemModel = await apiProvider.fetchPosts();
       setState(() {
        title = itemModel.id.toString();

@@ -1,5 +1,5 @@
 import 'package:http/http.dart' show Client;
-import 'item_model.dart';
+import '../models/item_model.dart';
 import 'dart:convert';
 
 class ApiProvider {
