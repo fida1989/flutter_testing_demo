@@ -41,7 +41,19 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(bottom: 50),
+              child: Text(
+                "Hello Test",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 10.0),
             TextField(
+              key: Key("myKey"),
               controller: _controller,
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
