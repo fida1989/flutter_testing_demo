@@ -22,9 +22,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  String reverseString(String initial) {
-    return initial.split('').reversed.join();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +77,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 if (_controller.text.isEmpty) return;
                 setState(() {
-                  _reversed = reverseString(_controller.text);
+                  _reversed = Utils.reverseString(_controller.text);
                 });
               },
             ),

@@ -17,16 +17,17 @@ void main() {
     });
     //home
     var textField = find.byType("TextField");
+    var year = find.text(DateTime.now().year.toString());
     var button = find.text("Reverse");
     var reverse = find.text("olleH");
     //details
     var details = find.text("Details");
-    var hello = find.text("Hello");
     var back = find.text("Back");
     var initial = find.text("Loading...");
     var result = find.text("1");
     //
     test("home screen test", () async {
+      await driver.waitFor(year);
       await driver.tap(textField);
       await driver.enterText("Hello");
       await driver.waitForAbsent(reverse);
@@ -41,7 +42,9 @@ void main() {
     test("details screen test", () async {
       //await driver.waitUntilNoTransientCallbacks();
       await driver.waitFor(initial);
+      await driver.waitUntilNoTransientCallbacks(timeout: Duration(seconds: 2));
       await driver.waitFor(result);
+      await driver.waitUntilNoTransientCallbacks(timeout: Duration(seconds: 2));
       await driver.tap(back);
       //await driver.tap(hello);
       //await driver.enterText("Yes Yes");

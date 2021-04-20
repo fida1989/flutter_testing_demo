@@ -31,7 +31,6 @@ class _DetailsPageState extends State<DetailsPage> {
       setState(() {
        title = itemModel.id.toString();
       });
-
     });
   }
 

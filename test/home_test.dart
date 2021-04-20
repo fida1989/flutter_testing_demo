@@ -1,4 +1,3 @@
-import 'package:flutter_testing_demo/pages/home.dart';
 import 'package:flutter_testing_demo/utils/utils.dart';
 import 'package:test/test.dart';
 
@@ -6,7 +5,7 @@ void main() {
   group('Home test', () {
     test('String should be reversed', () {
       String initial = "Hello";
-      String reversed = HomePage().createState().reverseString(initial);
+      String reversed = Utils.reverseString(initial);
       expect(reversed, 'olleH');
     });
     test('String should be current year', () {
