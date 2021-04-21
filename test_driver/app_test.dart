@@ -15,36 +15,26 @@ void main() {
         driver.close();
       }
     });
-    //home
-    var textField = find.byType("TextField");
-    var year = find.text(DateTime.now().year.toString());
-    var button = find.text("Reverse");
-    var reverse = find.text("olleH");
-    //details
-    var details = find.text("Details");
-    var back = find.text("Back");
-    var initial = find.text("Loading...");
-    var result = find.text("1");
     //
     test("home screen test", () async {
-      await driver.waitFor(year);
-      await driver.tap(textField);
+      await driver.waitFor(find.text(DateTime.now().year.toString()));
+      await driver.tap(find.byType("TextField"));
       await driver.enterText("Hello");
-      await driver.waitForAbsent(reverse);
-      await driver.tap(button);
-      await driver.waitFor(reverse);
+      await driver.waitForAbsent(find.text("olleH"));
+      await driver.tap(find.text("Reverse"));
+      await driver.waitFor(find.text("olleH"));
       await driver.waitUntilNoTransientCallbacks(timeout: Duration(seconds: 2));
-      assert(reverse != null);
-      await driver.tap(details);
+      await driver.tap(find.text("Details"));
     });
-
-
+    //
     test("details screen test", () async {
-      await driver.waitFor(initial);
+      await driver.waitFor(find.text("Loading..."));
       await driver.waitUntilNoTransientCallbacks(timeout: Duration(seconds: 2));
-      await driver.waitFor(result);
+      await driver.waitFor(find.text("1"));
+      await driver.waitFor(find.byType("ListView"));
+      await driver.tap(find.text("qui est esse"),timeout: Duration(seconds: 2));
       await driver.waitUntilNoTransientCallbacks(timeout: Duration(seconds: 2));
-      await driver.tap(back);
+      await driver.tap(find.text("Back"));
     });
   });
 }

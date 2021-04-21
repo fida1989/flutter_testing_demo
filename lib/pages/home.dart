@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_testing_demo/api/api_provider.dart';
+import 'package:flutter_testing_demo/api/repository.dart';
 import 'package:flutter_testing_demo/pages/details.dart';
 import 'package:flutter_testing_demo/utils/utils.dart';
 
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailsPage(apiProvider: ApiProvider())),
+                  MaterialPageRoute(builder: (context) => DetailsPage(apiProvider: Repository())),
                 );
               },
             ),
