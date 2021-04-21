@@ -40,18 +40,11 @@ void main() {
 
 
     test("details screen test", () async {
-      //await driver.waitUntilNoTransientCallbacks();
       await driver.waitFor(initial);
       await driver.waitUntilNoTransientCallbacks(timeout: Duration(seconds: 2));
       await driver.waitFor(result);
       await driver.waitUntilNoTransientCallbacks(timeout: Duration(seconds: 2));
       await driver.tap(back);
-      //await driver.tap(hello);
-      //await driver.enterText("Yes Yes");
-      //await driver.waitUntilNoTransientCallbacks();
-      /*Future.delayed(Duration(seconds: 2),() async {
-        await driver.tap(back);
-      });*/
     });
   });
 }
