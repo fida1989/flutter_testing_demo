@@ -6,13 +6,13 @@ import 'dart:convert';
 class Repository {
   Client client = Client();
   Future<ItemModel> fetchPost() async {
-    final response = await client.get(Urls.single);
+    final response = await client.get(Uri.parse(Urls.single));
     ItemModel itemModel = ItemModel.fromJson(json.decode(response.body));
     return itemModel;
   }
 
   Future<List<ItemModel>> fetchAllPosts() async {
-    final response = await client.get(Urls.all);
+    final response = await client.get(Uri.parse(Urls.all));
     List<ItemModel> items = [];
     List data = jsonDecode(response.body);
     for(var item in data){
