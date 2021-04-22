@@ -1,6 +1,18 @@
 pipeline {
+    agent any
     stages {
-         stage('Clean project') {
+      stage ('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage ('Flutter init') {
+            steps {
+                 echo "Running flutter doctor"
+                 sh "flutter doctor"
+            }
+        }
+        stage('Clean project') {
             steps {
                 sh 'flutter clean'
             }
