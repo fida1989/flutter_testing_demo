@@ -1,0 +1,8 @@
+version: '2'  
+services:
+      flutter-test:
+        build:
+          context: ../
+          dockerfile: Dockerfile
+        volumes:
+          - ../ :/home/user/Project
